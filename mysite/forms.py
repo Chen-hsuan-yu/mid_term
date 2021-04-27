@@ -28,4 +28,5 @@ class ContactForm(forms.Form):
     user_city = forms.ChoiceField(label='居住城市', choices=CITY)
     user_school = forms.BooleanField(label='是否在學', required=False)
     user_email = forms.EmailField(label='電子郵件')
+    user_title = forms.CharField(label='標題', max_length=50, initial='沒有標題')
     user_message = forms.CharField(label='您的意見', widget=forms.Textarea)

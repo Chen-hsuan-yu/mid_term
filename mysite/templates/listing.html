@@ -19,14 +19,20 @@
       <div class='panel {%cycle "panel-primary" "panel-info" "panel-warning" "panel-success" %}'>
         <div class='panel-heading'>
          <table width='100%'>
-          <tr>
-            <td>
+             <tr>
+              <td>
               【{{ p.nickname }}】覺得{{ p.mood }}
-            </td>
-            <td align=right>
-              <i><small>{{ p.pub_time }}</small></i>
-            </td>
-          </tr>
+              </td>
+              <td align=right>
+                <i><small>{{ p.pub_time }}</small></i>
+              </td>
+             </tr>
+             <tr>
+                 <td>
+                 標題: {{ p.msgtitle }}
+                </td>
+             </tr>
+
          </table>
         </div>
         <div class='panel-body'>{{ p.message | linebreaks }}</div>

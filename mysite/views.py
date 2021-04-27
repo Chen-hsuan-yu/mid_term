@@ -12,6 +12,7 @@ def index(request, pid=None, del_pass=None):
         user_pass = request.GET['user_pass']
         user_post = request.GET['user_post']
         user_mood = request.GET['mood']
+        user_title = request.GET['user_title']
     except:
         user_id = None
         message = '如果要張貼訊息，則每一個欄位都要填寫'
@@ -29,7 +30,7 @@ def index(request, pid=None, del_pass=None):
                 message = "密碼錯誤"
     elif user_id != None:
         mood = models.Mood.objects.get(status=user_mood)
-        post = models.Post.objects.create(mood=mood, nickname=user_id, del_pass=user_pass, message=user_post)
+        post = models.Post.objects.create(mood=mood, nickname=user_id, del_pass=user_pass, message=user_post,msgtitle=user_title)
         post.save()
         message = '成功儲存! 請記得你的編輯密碼[{}]!'.format(user_pass)
     return render(request, 'index.html', locals())
@@ -46,6 +47,7 @@ def posting(request):
         user_pass = request.POST['user_pass']
         user_post = request.POST['user_post']
         user_mood = request.POST['mood']
+        user_title = request.POST['user_title']
     except:
         user_id = None
         message = '如果要張貼訊息，則每一個欄位都要填寫'
@@ -71,6 +73,7 @@ def contact(request):
             user_school = form.cleaned_data['user_school']
             user_email = form.cleaned_data['user_email']
             user_message = form.cleaned_data['user_message']
+            user_title = form.cleaned_data['user_title']
         else:
             message = "請檢查您輸入的資訊是否正確"
     else:
